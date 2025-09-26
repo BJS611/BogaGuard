@@ -16,11 +16,11 @@
 1. Open Chrome/Edge and go to `chrome://extensions/`
 2. Enable "Developer mode" (top right toggle)
 3. Click "Load unpacked" and select this folder
-4. The LinkGuard shield icon will appear in your toolbar
+4. The BogaGuard shield icon will appear in your toolbar
 
 ## 🎯 How It Works
 
-LinkGuard uses a unique multi-factor risk assessment:
+BogaGuard uses a unique multi-factor risk assessment:
 
 - **Pattern Analysis**: Detects URL shorteners, suspicious domains
 - **Heuristic Scanning**: Identifies phishing keywords and structures  
@@ -69,7 +69,7 @@ This extension was built in 3 days with focus on:
 
 ## 🔒 Privacy
 
-LinkGuard processes all data locally - no external API calls or data collection.
+BogaGuard processes all data locally - no external API calls or data collection.
 
 ---
 
