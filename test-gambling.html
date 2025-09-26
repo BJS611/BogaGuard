@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Gambling & Adult Content Blocking</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+        }
+        .gambling { background: #ffe6e6; }
+        .adult { background: #fff0f0; }
+        .mixed { background: #f0f0f0; }
+        h2 { color: #333; }
+        a { margin: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>🛡️ LinkGuard - Gambling & Adult Content Test</h1>
+    <p>Test page untuk menguji blocking website judi online dan konten dewasa.</p>
+    
+    <div class="test-section gambling">
+        <h2>🎰 Gambling/Judi Links (Should be BLOCKED)</h2>
+        <a href="https://slotonline88.com">Slot Online 88</a>
+        <a href="https://judibola-maxwin.net">Judi Bola Maxwin</a>
+        <a href="https://casino-gacor777.id">Casino Gacor 777</a>
+        <a href="https://poker-deposit.com">Poker Deposit</a>
+        <a href="https://togel-hongkong.net">Togel Hongkong</a>
+        <a href="https://sbobet-taruhan.com">SBOBET Taruhan</a>
+        <a href="https://pragmatic-slot.org">Pragmatic Slot</a>
+        <a href="https://jackpot-bonus999.com">Jackpot Bonus 999</a>
+    </div>
+    
+    <div class="test-section adult">
+        <h2>🔞 Adult Content Links (Should be BLOCKED)</h2>
+        <a href="https://adult-content.xxx">Adult Content XXX</a>
+        <a href="https://bokep-indonesia.com">Bokep Indonesia</a>
+        <a href="https://porn-videos.net">Porn Videos</a>
+        <a href="https://nude-photos.org">Nude Photos</a>
+        <a href="https://18plus-content.com">18+ Content</a>
+        <a href="https://nsfw-material.net">NSFW Material</a>
+        <a href="https://mature-videos.xxx">Mature Videos</a>
+    </div>
+    
+    <div class="test-section mixed">
+        <h2>⚠️ Mixed Suspicious Links</h2>
+        <a href="https://bit.ly/casino-link">Shortened Casino Link</a>
+        <a href="https://secure-verify-adult.tk">Phishing + Adult</a>
+        <a href="https://192.168.1.1/gambling">IP + Gambling</a>
+        <a href="https://very-long-gambling-domain-name.ml">Long Gambling Domain</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>📱 WhatsApp/Telegram Simulation</h2>
+        <div style="border: 1px solid #25D366; padding: 15px; background: #f0f8f0;">
+            <p><strong>Unknown Contact:</strong> +62812345678</p>
+            <p>Halo bro, mau main slot gacor? Jackpot terus nih!</p>
+            <a href="https://slot-gacor-maxwin88.com/daftar">🎰 DAFTAR SEKARANG - BONUS 200%</a>
+            <p>Minimal deposit cuma 10rb, withdraw langsung cair!</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📧 Spam Email Simulation</h2>
+        <div style="border: 1px solid #ccc; padding: 15px; background: #f9f9f9;">
+            <p><strong>From:</strong> promo@casino-online.net</p>
+            <p><strong>Subject:</strong> MENANG JUTAAN RUPIAH HARI INI!</p>
+            <p>Selamat! Anda terpilih untuk bonus casino 500%</p>
+            <a href="https://casino-bonus-terbesar.id/claim">KLAIM BONUS SEKARANG</a>
+            <p>Buruan sebelum kehabisan!</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Test page loaded - LinkGuard should scan these links');
+        
+        // Add dynamic gambling links
+        setTimeout(() => {
+            const dynamicSection = document.createElement('div');
+            dynamicSection.className = 'test-section gambling';
+            dynamicSection.innerHTML = `
+                <h2>🔄 Dynamic Gambling Links</h2>
+                <a href="https://dynamic-slot777.com">Dynamic Slot 777</a>
+                <a href="https://live-casino-gacor.net">Live Casino Gacor</a>
+            `;
+            document.body.appendChild(dynamicSection);
+        }, 2000);
+    </script>
+</body>
+</html>

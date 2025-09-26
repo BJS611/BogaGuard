@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkGuard Navigation Control Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+        }
+        .navigation-test { background: #f0f8ff; }
+        .reload-test { background: #fff0f0; }
+        .redirect-test { background: #f0fff0; }
+        h2 { color: #333; }
+        button { 
+            margin: 10px; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+        }
+        button:hover { background: #0056b3; }
+        .warning { 
+            background: #fff3cd; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .info { 
+            background: #d1ecf1; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin: 15px 0;
+            border-left: 4px solid #17a2b8;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ LinkGuard Navigation Control Test</h1>
+    <p>Test page untuk menguji sistem persetujuan navigasi LinkGuard.</p>
+    
+    <div class="info">
+        <strong>ℹ️ How it works:</strong> LinkGuard akan meminta persetujuan untuk SEMUA jenis navigasi, termasuk reload, redirect, dan perpindahan halaman. Setiap navigasi akan dianalisis risikonya terlebih dahulu.
+    </div>
+    
+    <div class="warning">
+        <strong>⚠️ Expected Behavior:</strong> Setiap button di bawah akan memunculkan dialog persetujuan dari LinkGuard sebelum navigasi dilakukan.
+    </div>
+    
+    <div class="test-section navigation-test">
+        <h2>🔄 Basic Navigation Tests</h2>
+        <p>Test navigasi dasar yang harus meminta persetujuan:</p>
+        
+        <button onclick="testLocationHref()">window.location.href</button>
+        <button onclick="testLocationAssign()">location.assign()</button>
+        <button onclick="testLocationReplace()">location.replace()</button>
+        <button onclick="testHistoryPush()">history.pushState()</button>
+        <button onclick="testHistoryReplace()">history.replaceState()</button>
+    </div>
+    
+    <div class="test-section reload-test">
+        <h2>🔃 Reload Tests</h2>
+        <p>Test reload yang harus meminta persetujuan:</p>
+        
+        <button onclick="testLocationReload()">location.reload()</button>
+        <button onclick="testWindowReload()">window.location.reload()</button>
+        <button onclick="testF5Simulation()">Simulate F5 (beforeunload)</button>
+        <button onclick="testHardReload()">Hard Reload Simulation</button>
+    </div>
+    
+    <div class="test-section redirect-test">
+        <h2>🔗 Redirect Risk Tests</h2>
+        <p>Test navigasi ke berbagai tingkat risiko:</p>
+        
+        <button onclick="testSafeNavigation()">Navigate to Safe Site (Google)</button>
+        <button onclick="testMediumRisk()">Navigate to Medium Risk Site</button>
+        <button onclick="testHighRisk()">Navigate to High Risk Site</button>
+        <button onclick="testScamSite()">Navigate to Scam Site</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Dashboard Access</h2>
+        <p>Test akses ke dashboard scan results:</p>
+        
+        <button onclick="openDashboard()">Open Scan Dashboard</button>
+        <button onclick="testDashboardData()">Test Dashboard Data</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📝 Current Page Info</h2>
+        <div id="page-info">
+            <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+            <p><strong>Page Title:</strong> <span id="page-title"></span></p>
+            <p><strong>Navigation Count:</strong> <span id="nav-count">0</span></p>
+        </div>
+    </div>
+    
+    <script>
+        let navigationCount = 0;
+        
+        // Update page info
+        function updatePageInfo() {
+            document.getElementById('current-url').textContent = window.location.href;
+            document.getElementById('page-title').textContent = document.title;
+            document.getElementById('nav-count').textContent = navigationCount;
+        }
+        
+        // Basic navigation tests
+        function testLocationHref() {
+            console.log('Testing window.location.href navigation...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.href = 'https://example.com/test-href';
+        }
+        
+        function testLocationAssign() {
+            console.log('Testing location.assign() navigation...');
+            navigationCount++;
+            updatePageInfo();
+            location.assign('https://example.com/test-assign');
+        }
+        
+        function testLocationReplace() {
+            console.log('Testing location.replace() navigation...');
+            navigationCount++;
+            updatePageInfo();
+            location.replace('https://example.com/test-replace');
+        }
+        
+        function testHistoryPush() {
+            console.log('Testing history.pushState() navigation...');
+            navigationCount++;
+            updatePageInfo();
+            history.pushState({}, 'Test Push', 'https://example.com/test-push');
+        }
+        
+        function testHistoryReplace() {
+            console.log('Testing history.replaceState() navigation...');
+            navigationCount++;
+            updatePageInfo();
+            history.replaceState({}, 'Test Replace', 'https://example.com/test-replace-state');
+        }
+        
+        // Reload tests
+        function testLocationReload() {
+            console.log('Testing location.reload()...');
+            navigationCount++;
+            updatePageInfo();
+            location.reload();
+        }
+        
+        function testWindowReload() {
+            console.log('Testing window.location.reload()...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.reload();
+        }
+        
+        function testF5Simulation() {
+            console.log('Testing F5 simulation (beforeunload)...');
+            navigationCount++;
+            updatePageInfo();
+            
+            // Simulate F5 key press
+            const event = new KeyboardEvent('keydown', {
+                key: 'F5',
+                code: 'F5',
+                keyCode: 116
+            });
+            document.dispatchEvent(event);
+            
+            // Trigger beforeunload
+            window.dispatchEvent(new Event('beforeunload'));
+        }
+        
+        function testHardReload() {
+            console.log('Testing hard reload simulation...');
+            navigationCount++;
+            updatePageInfo();
+            
+            // Simulate Ctrl+F5
+            const event = new KeyboardEvent('keydown', {
+                key: 'F5',
+                code: 'F5',
+                keyCode: 116,
+                ctrlKey: true
+            });
+            document.dispatchEvent(event);
+        }
+        
+        // Risk-based navigation tests
+        function testSafeNavigation() {
+            console.log('Testing navigation to safe site...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.href = 'https://www.google.com';
+        }
+        
+        function testMediumRisk() {
+            console.log('Testing navigation to medium risk site...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.href = 'https://suspicious-long-domain-name-example.com/path';
+        }
+        
+        function testHighRisk() {
+            console.log('Testing navigation to high risk site...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.href = 'https://bit.ly/suspicious-shortened-link';
+        }
+        
+        function testScamSite() {
+            console.log('Testing navigation to scam site...');
+            navigationCount++;
+            updatePageInfo();
+            window.location.href = 'https://fake-survey-winner-iphone15.tk/claim?winner=selected&expires=999999';
+        }
+        
+        // Dashboard tests
+        function openDashboard() {
+            console.log('Opening scan dashboard...');
+            // This should be handled by the extension
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                chrome.runtime.sendMessage({action: 'openDashboard'});
+            } else {
+                alert('Dashboard can only be opened when extension is active');
+            }
+        }
+        
+        function testDashboardData() {
+            console.log('Testing dashboard data...');
+            
+            // Simulate some threat data for dashboard
+            const testData = {
+                threats: [
+                    {
+                        url: 'https://fake-scam-site.tk/malicious',
+                        timestamp: Date.now(),
+                        risk: 0.9,
+                        category: 'scam',
+                        reasons: ['Prize scam detected', 'Suspicious domain', 'Fake survey']
+                    }
+                ],
+                redirects: [
+                    {
+                        url: 'https://redirect-chain.com/step1',
+                        timestamp: Date.now(),
+                        type: 'redirect',
+                        source: 'javascript',
+                        blocked: true
+                    }
+                ],
+                contentAnalysis: [
+                    {
+                        domain: 'test-content-analysis.com',
+                        timestamp: Date.now(),
+                        score: 0.7,
+                        threats: ['Fake urgency language', 'Credential harvesting form', 'Hidden malicious content']
+                    }
+                ]
+            };
+            
+            // Store test data
+            if (typeof chrome !== 'undefined' && chrome.storage) {
+                chrome.storage.local.set({
+                    lg_threats: testData.threats,
+                    lg_redirects: testData.redirects,
+                    lg_content: testData.contentAnalysis
+                });
+                alert('Test data stored for dashboard');
+            } else {
+                console.log('Test data:', testData);
+                alert('Test data logged to console (extension not active)');
+            }
+        }
+        
+        // Initialize page
+        updatePageInfo();
+        
+        // Listen for navigation events
+        window.addEventListener('beforeunload', (e) => {
+            console.log('beforeunload event triggered');
+        });
+        
+        window.addEventListener('popstate', (e) => {
+            console.log('popstate event triggered');
+            updatePageInfo();
+        });
+        
+        // Log when page loads
+        console.log('Navigation control test page loaded');
+        console.log('LinkGuard should intercept ALL navigation attempts and show approval dialogs');
+    </script>
+</body>
+</html>

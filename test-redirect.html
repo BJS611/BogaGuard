@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkGuard Redirect Bypass Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+        }
+        .redirect-test { background: #fff0f0; }
+        .chain-test { background: #f0f0ff; }
+        .bypass-test { background: #f0fff0; }
+        h2 { color: #333; }
+        button { 
+            margin: 10px; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            background: #ff6b6b;
+            color: white;
+        }
+        .warning { 
+            background: #fff3cd; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 LinkGuard Anti-Redirect Test</h1>
+    <p>Test page untuk menguji kemampuan mendeteksi dan memblokir redirect bypass.</p>
+    
+    <div class="warning">
+        <strong>⚠️ Warning:</strong> Buttons di bawah akan mencoba melakukan redirect ke situs berbahaya. LinkGuard harus memblokir semua percobaan ini.
+    </div>
+    
+    <div class="test-section redirect-test">
+        <h2>🚫 Direct Redirect Tests</h2>
+        <p>Test redirect langsung ke situs berbahaya:</p>
+        
+        <button onclick="redirectToScam()">Redirect to Scam Survey</button>
+        <button onclick="redirectToGambling()">Redirect to Gambling Site</button>
+        <button onclick="redirectToAdult()">Redirect to Adult Content</button>
+        <button onclick="redirectToCrypto()">Redirect to Crypto Scam</button>
+    </div>
+    
+    <div class="test-section chain-test">
+        <h2>🔗 Redirect Chain Tests</h2>
+        <p>Test multiple redirect chains (bypass technique):</p>
+        
+        <button onclick="redirectChain1()">3-Step Redirect Chain</button>
+        <button onclick="redirectChain2()">Rapid Redirect Chain</button>
+        <button onclick="domainHopping()">Domain Hopping Chain</button>
+        <button onclick="delayedRedirect()">Delayed Redirect</button>
+    </div>
+    
+    <div class="test-section bypass-test">
+        <h2>🕳️ Advanced Bypass Tests</h2>
+        <p>Test teknik bypass yang lebih canggih:</p>
+        
+        <button onclick="jsRedirect()">JavaScript Redirect</button>
+        <button onclick="metaRefresh()">Meta Refresh Redirect</button>
+        <button onclick="iframeRedirect()">Iframe Redirect</button>
+        <button onclick="ajaxRedirect()">AJAX Redirect</button>
+        <button onclick="historyManipulation()">History Manipulation</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 Real-world Scenarios</h2>
+        
+        <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+            <h3>Scenario 1: Fake Social Media Link</h3>
+            <p>User clicks innocent-looking social media link that redirects to scam:</p>
+            <button onclick="socialMediaBypass()">Click "Funny Video" Link</button>
+        </div>
+        
+        <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+            <h3>Scenario 2: Email Phishing Chain</h3>
+            <p>Email link that goes through multiple redirects to hide final destination:</p>
+            <button onclick="emailPhishingChain()">Click "Verify Account" Email Link</button>
+        </div>
+        
+        <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+            <h3>Scenario 3: Ad Network Redirect</h3>
+            <p>Malicious ad that redirects through ad networks to gambling site:</p>
+            <button onclick="adNetworkRedirect()">Click "Win iPhone" Ad</button>
+        </div>
+    </div>
+    
+    <script>
+        // Direct redirect functions
+        function redirectToScam() {
+            console.log('Attempting redirect to scam survey...');
+            window.location.href = 'https://fake-survey-winner-iphone15.tk/claim?winner=selected&expires=999999';
+        }
+        
+        function redirectToGambling() {
+            console.log('Attempting redirect to gambling...');
+            window.location.href = 'https://casino-maxwin-gacor777.ml/register?bonus=1000';
+        }
+        
+        function redirectToAdult() {
+            console.log('Attempting redirect to adult content...');
+            window.location.href = 'https://premium-adult-content-free.xxx/access?age=verify';
+        }
+        
+        function redirectToCrypto() {
+            console.log('Attempting redirect to crypto scam...');
+            window.location.href = 'https://bitcoin-investment-guaranteed.tk/invest?profit=500';
+        }
+        
+        // Redirect chain functions
+        function redirectChain1() {
+            console.log('Starting 3-step redirect chain...');
+            // Step 1: Innocent looking domain
+            setTimeout(() => {
+                history.pushState({}, '', 'https://news-update.com/redirect?to=step2');
+                // Step 2: Intermediate redirect
+                setTimeout(() => {
+                    history.pushState({}, '', 'https://link-shortener.net/r/abc123');
+                    // Step 3: Final malicious destination
+                    setTimeout(() => {
+                        window.location.href = 'https://scam-prize-survey.tk/claim?chain=true';
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+        
+        function redirectChain2() {
+            console.log('Starting rapid redirect chain...');
+            const urls = [
+                'https://redirect1.com/go',
+                'https://redirect2.net/forward', 
+                'https://redirect3.org/jump',
+                'https://final-scam-destination.tk/malware'
+            ];
+            
+            let i = 0;
+            const rapidRedirect = setInterval(() => {
+                if (i < urls.length) {
+                    history.pushState({}, '', urls[i]);
+                    i++;
+                } else {
+                    clearInterval(rapidRedirect);
+                }
+            }, 200);
+        }
+        
+        function domainHopping() {
+            console.log('Starting domain hopping...');
+            const domains = [
+                'https://domain1.com/hop',
+                'https://domain2.net/jump',
+                'https://domain3.org/bounce',
+                'https://gambling-final-destination.ml/casino'
+            ];
+            
+            domains.forEach((url, index) => {
+                setTimeout(() => {
+                    history.pushState({}, '', url);
+                }, index * 800);
+            });
+        }
+        
+        function delayedRedirect() {
+            console.log('Starting delayed redirect...');
+            setTimeout(() => {
+                window.location.href = 'https://delayed-scam-attack.tk/survey?delayed=5sec';
+            }, 5000);
+            alert('Redirect will happen in 5 seconds... LinkGuard should block it!');
+        }
+        
+        // Advanced bypass functions
+        function jsRedirect() {
+            console.log('Attempting JavaScript redirect...');
+            const script = document.createElement('script');
+            script.textContent = `
+                setTimeout(() => {
+                    window.location.replace('https://js-redirect-scam.tk/malicious');
+                }, 1000);
+            `;
+            document.head.appendChild(script);
+        }
+        
+        function metaRefresh() {
+            console.log('Attempting meta refresh redirect...');
+            const meta = document.createElement('meta');
+            meta.httpEquiv = 'refresh';
+            meta.content = '2;url=https://meta-refresh-scam.tk/redirect';
+            document.head.appendChild(meta);
+        }
+        
+        function iframeRedirect() {
+            console.log('Attempting iframe redirect...');
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://iframe-redirect-scam.tk/frame';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            setTimeout(() => {
+                window.location.href = iframe.src;
+            }, 2000);
+        }
+        
+        function ajaxRedirect() {
+            console.log('Attempting AJAX redirect...');
+            fetch('https://ajax-redirect-scam.tk/api/redirect')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    }
+                })
+                .catch(() => {
+                    // Fallback redirect
+                    window.location.href = 'https://ajax-fallback-scam.tk/redirect';
+                });
+        }
+        
+        function historyManipulation() {
+            console.log('Attempting history manipulation...');
+            // Manipulate history to confuse detection
+            for (let i = 0; i < 5; i++) {
+                history.pushState({}, '', `https://fake-history-${i}.com/page`);
+            }
+            
+            setTimeout(() => {
+                window.location.href = 'https://history-manipulation-scam.tk/final';
+            }, 1000);
+        }
+        
+        // Real-world scenario functions
+        function socialMediaBypass() {
+            console.log('Social media bypass attempt...');
+            // Simulate clicking a social media link
+            history.pushState({}, '', 'https://social-link.com/funny-video');
+            setTimeout(() => {
+                history.pushState({}, '', 'https://ad-tracker.net/click?id=12345');
+                setTimeout(() => {
+                    window.location.href = 'https://survey-scam-final.tk/win-iphone';
+                }, 1000);
+            }, 1000);
+        }
+        
+        function emailPhishingChain() {
+            console.log('Email phishing chain attempt...');
+            const chain = [
+                'https://email-tracker.com/open?id=abc123',
+                'https://link-validator.net/verify?token=xyz789',
+                'https://security-check.org/redirect?safe=true',
+                'https://phishing-final-destination.tk/steal-credentials'
+            ];
+            
+            chain.forEach((url, index) => {
+                setTimeout(() => {
+                    if (index === chain.length - 1) {
+                        window.location.href = url;
+                    } else {
+                        history.pushState({}, '', url);
+                    }
+                }, index * 1500);
+            });
+        }
+        
+        function adNetworkRedirect() {
+            console.log('Ad network redirect attempt...');
+            // Simulate ad network redirects
+            const adChain = [
+                'https://ad-network1.com/click?campaign=iphone',
+                'https://ad-network2.net/redirect?offer=prize',
+                'https://tracking-pixel.org/count?ad=mobile',
+                'https://gambling-casino-final.ml/play?source=ad'
+            ];
+            
+            adChain.forEach((url, index) => {
+                setTimeout(() => {
+                    history.pushState({}, '', url);
+                }, index * 600);
+            });
+            
+            setTimeout(() => {
+                window.location.href = adChain[adChain.length - 1];
+            }, adChain.length * 600);
+        }
+        
+        console.log('Redirect bypass test page loaded');
+        console.log('LinkGuard should block ALL redirect attempts on this page');
+    </script>
+</body>
+</html>

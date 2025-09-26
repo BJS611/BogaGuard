@@ -1,0 +1,208 @@
+/* LinkGuard Styles - Hackathon Edition */
+.lg-threat {
+  background: linear-gradient(45deg, #E57373, #C62828) !important;
+  color: white !important;
+  border: 2px solid #D32F2F !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  text-decoration: line-through !important;
+  position: relative !important;
+  animation: lg-pulse 2s infinite !important;
+}
+
+.lg-suspicious {
+  border-bottom: 2px dotted #FFA726 !important;
+  background: rgba(255, 167, 38, 0.1) !important;
+}
+
+.lg-warning {
+  display: inline-block !important;
+  margin-right: 5px !important;
+  font-size: 14px !important;
+  animation: lg-blink 1.5s infinite !important;
+  cursor: help !important;
+}
+
+.lg-dialog {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.lg-dialog-content {
+  background: white !important;
+  padding: 25px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  max-width: 400px !important;
+  text-align: center !important;
+  border: 3px solid #4CAF50 !important;
+}
+
+.lg-dialog-content h3 {
+  margin: 0 0 15px 0 !important;
+  color: #2E7D32 !important;
+  font-size: 20px !important;
+}
+
+.lg-dialog-content p {
+  margin: 10px 0 !important;
+  color: #333 !important;
+  font-size: 14px !important;
+}
+
+.url-preview {
+  background: #f5f5f5 !important;
+  padding: 8px !important;
+  border-radius: 4px !important;
+  font-family: monospace !important;
+  word-break: break-all !important;
+  font-size: 12px !important;
+}
+
+.lg-buttons {
+  margin-top: 20px !important;
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+}
+
+.lg-btn-danger, .lg-btn-warning {
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  transition: all 0.2s !important;
+}
+
+.lg-btn-danger {
+  background: #E57373 !important;
+  color: white !important;
+}
+
+.lg-btn-danger:hover {
+  background: #C62828 !important;
+}
+
+.lg-btn-warning {
+  background: #FFA726 !important;
+  color: white !important;
+}
+
+.lg-btn-warning:hover {
+  background: #FF9800 !important;
+}
+
+.risk-high {
+  color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+.risk-medium {
+  color: #ffa500 !important;
+  font-weight: bold !important;
+}
+
+@keyframes lg-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes lg-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.lg-reasons {
+  text-align: left !important;
+  margin: 15px 0 !important;
+  padding: 10px !important;
+  background: #f5f5f5 !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+}
+
+.lg-reasons div {
+  margin: 5px 0 !important;
+  color: #666 !important;
+}
+
+/* Page blocking styles */
+.lg-page-block {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(135deg, #ff4444, #cc0000) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+.lg-block-content {
+  background: white !important;
+  padding: 40px !important;
+  border-radius: 15px !important;
+  text-align: center !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  max-width: 500px !important;
+}
+
+.lg-block-content h1 {
+  color: #cc0000 !important;
+  margin-bottom: 10px !important;
+}
+
+.lg-block-content h2 {
+  color: #333 !important;
+  margin: 20px 0 !important;
+}
+
+.lg-block-content ul {
+  text-align: left !important;
+  margin: 20px 0 !important;
+  color: #666 !important;
+}
+
+.lg-block-icon {
+  font-size: 80px !important;
+  margin: 20px 0 !important;
+}
+
+.lg-block-buttons {
+  margin: 30px 0 !important;
+}
+
+.lg-btn-safe {
+  background: #4CAF50 !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  margin: 0 10px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+}
+
+.lg-btn-safe:hover {
+  background: #4CAF50 !important;
+}
+
+.lg-block-footer {
+  margin-top: 20px !important;
+  font-size: 12px !important;
+  color: #999 !important;
+}

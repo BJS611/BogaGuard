@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkGuard Test Page</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section { 
+            margin: 30px 0; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+        }
+        .safe { background: #e8f5e8; }
+        .suspicious { background: #fff3cd; }
+        .dangerous { background: #f8d7da; }
+        h2 { color: #333; }
+        a { margin: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>🛡️ LinkGuard Test Page</h1>
+    <p>This page contains various types of links to test the LinkGuard extension.</p>
+    
+    <div class="test-section safe">
+        <h2>✅ Safe Links (Should be unmarked)</h2>
+        <a href="https://www.google.com">Google Search</a>
+        <a href="https://github.com">GitHub</a>
+        <a href="https://stackoverflow.com">Stack Overflow</a>
+        <a href="https://en.wikipedia.org">Wikipedia</a>
+    </div>
+    
+    <div class="test-section suspicious">
+        <h2>⚠️ Suspicious Links (Should show orange warning)</h2>
+        <a href="https://very-long-suspicious-domain-name-that-looks-fake.com">Long Domain</a>
+        <a href="https://sub1.sub2.sub3.example.com">Multiple Subdomains</a>
+        <a href="https://test123domain.net">Numbers in Domain</a>
+    </div>
+    
+    <div class="test-section dangerous">
+        <h2>🚨 Dangerous Links (Should be blocked with red warning)</h2>
+        <a href="https://bit.ly/fake-link">Shortened URL (bit.ly)</a>
+        <a href="https://192.168.1.1/login">IP Address Link</a>
+        <a href="https://secure-account-verify-payment.tk">Phishing Keywords</a>
+        <a href="https://gооgle.com">Homograph Attack (Cyrillic 'o')</a>
+        <a href="https://abcdefghijklmnopqrstuvwxyz.com">Suspicious Long Domain</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>📧 Email Simulation</h2>
+        <div style="border: 1px solid #ccc; padding: 15px; background: #f9f9f9;">
+            <p><strong>From:</strong> security@bank-alert.com</p>
+            <p><strong>Subject:</strong> Urgent: Verify Your Account</p>
+            <p>Dear Customer,</p>
+            <p>Your account requires immediate verification. Please click the link below:</p>
+            <a href="https://secure-verify-account-update.ml/login">Verify Account Now</a>
+            <p>This link will expire in 24 hours.</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>💬 Social Media Simulation</h2>
+        <div style="border: 1px solid #ccc; padding: 15px; background: #f0f8ff;">
+            <p><strong>Friend:</strong> Hey, check out this amazing deal I found!</p>
+            <a href="https://tinyurl.com/amazing-deal">Amazing 90% Off Deal!</a>
+            <p>Limited time only, hurry!</p>
+        </div>
+    </div>
+    
+    <script>
+        // Add some dynamic links to test mutation observer
+        setTimeout(() => {
+            const dynamicSection = document.createElement('div');
+            dynamicSection.className = 'test-section dangerous';
+            dynamicSection.innerHTML = `
+                <h2>🔄 Dynamically Added Links</h2>
+                <a href="https://phishing-site-example.tk">Dynamic Phishing Link</a>
+                <a href="https://bit.ly/dynamic-short">Dynamic Short URL</a>
+            `;
+            document.body.appendChild(dynamicSection);
+        }, 3000);
+    </script>
+</body>
+</html>

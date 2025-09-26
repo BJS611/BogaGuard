@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "BogaGuard - Phishing Shield",
+  "version": "1.0.0",
+  "description": "Real-time phishing link detection for safer browsing",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "background",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["button-functions.js", "ml-detector.js", "redirect-monitor.js", "content-analyzer.js", "content.js"],
+      "css": ["guard.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BogaGuard Status"
+  },
+  "icons": {
+    "16": "icons/shield16.png",
+    "48": "icons/shield48.png",
+    "128": "icons/shield128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["scan-dashboard.html", "scan-dashboard.js", "button-functions.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
