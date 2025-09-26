@@ -1,6 +1,6 @@
 # 🛡️ BogaGuard - Phishing Detection Extension
 
-**Built for Hackathon 2024** - A lightweight browser extension that protects users from phishing attacks in real-time.
+**Built for Hackathon 2025** - A lightweight browser extension that protects users from phishing attacks in real-time.
 
 ## 🚀 Features
 
